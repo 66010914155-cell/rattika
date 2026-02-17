@@ -28,6 +28,7 @@ if(isset($_POST['Submit'])){
     <tr>
         <th>รหัสภาค</th>
         <th>ชื่อภาค</th>
+        <th>ลบ</th>
     </tr>
 
 <?php
@@ -40,6 +41,7 @@ if(isset($_POST['Submit'])){
     <tr>
         <td><?php echo $data['r_id']; ?></td>
         <td><?php echo $data['r_name']; ?></td>
+        <td width="50" align="center"><a href="delete_region.php?id=<?php echo $data['r_id']; ?>" onClick="return confrim('ยืนยันการลบ?');"><img scr="images/ลบ.jpg" width="20"</a></td>
     </tr>
 <?php
     } 

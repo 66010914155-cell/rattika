@@ -7,7 +7,7 @@
 
 <body><h1> ข้อมูลจังหวัด รัตติกา บุญจันทร์สุนี(พิม) </h1>
 
-<form method="post" action="">
+<form method="post" action=""enctype="multi">
     ชื่อจังหวัด <input type="text" name="rname" autofocus required><br>
     รูปภาพ <input type="file" name="pimage"><br>
     ชื่อภาค
@@ -30,8 +30,11 @@
 if(isset($_POST['Submit'])){
     include_once("connectdb.php");
     $rname = $_POST['rname'];
+	$ext = pathinfo($_FILES['pimage']['name'], PATHINFO_EXTENSION);
+	$rid = $_POST['rid'];
     $sql2 = "INSERT INTO provinces VALUES (NULL, '$rname')";
     mysqli_query($conn, $sql2) or die ("insert ไม่ได้");
+	copy($_FILES['pimage']['tmp_name'],"images/".$pic_id.".".$ext);
 }
 ?>
 
